@@ -1,27 +1,26 @@
-# main.py
-
-# Importamos nuestro módulo y ahora también 'datetime' para las edades
 import operaciones_conjuntos as ops
-from datetime import datetime
+anios_nacimiento = []
+dni_A_str = input("Ingrese el DNI A (sin puntos ni guiones): ")
+anio_a = int(input(f"Ingrese el año de nacimiento para DNI {dni_A_str}: "))
+anios_nacimiento.append(anio_a)
+dni_B_str = input("Ingrese el DNI B (sin puntos ni guiones): ")
+anio_b = int(input(f"Ingrese el año de nacimiento para DNI {dni_B_str}: "))
+anios_nacimiento.append(anio_b)
 
 def procesar_dnis():
     """Función para toda la lógica de la Parte A."""
     print("--- Parte A: Operaciones con DNIs ---")
-    
-    dni_A_str = "22775850"
-    dni_B_str = "42304272"
     print(f"DNI A: {dni_A_str}\nDNI B: {dni_B_str}\n")
 
     conjunto_A = ops.generar_conjunto_unico(dni_A_str)
     conjunto_B = ops.generar_conjunto_unico(dni_B_str)
     
-    # Corregí este print para que sea más claro
+
     print(f"Conjunto A: {conjunto_A}")
     print(f"Conjunto B: {conjunto_B}")
     print("-" * 20)
 
-    # --- CORRECCIÓN AQUÍ ---
-    # Ahora llamamos a las funciones con sus nuevos nombres (sin "_manual")
+
     union = ops.union(conjunto_A, conjunto_B)
     interseccion = ops.interseccion(conjunto_A, conjunto_B)
     diferencia = ops.diferencia(conjunto_A, conjunto_B)
@@ -34,7 +33,6 @@ def procesar_dnis():
     print("-" * 20)
     
     print("Evaluando Expresiones Lógicas:")
-    # --- CORRECCIÓN AQUÍ ---
     if ops.es_subconjunto(conjunto_A, conjunto_B):
         print("Expresión 1: Se cumple. A está contenido en B.")
     else:
@@ -45,11 +43,9 @@ def procesar_dnis():
     else:
         print("Expresión 2: No se cumple. La diferencia no es alta.")
 
+# PARTE B, OPERACIONES CON AÑOS DE NACIMIENTO
 def procesar_anios():
-    """Función para toda la lógica de la Parte B."""
     print("\n--- Parte B: Operaciones con Años de Nacimiento ---")
-    
-    anios_nacimiento = [1999, 2003]
     print(f"Años de nacimiento: {anios_nacimiento}")
     print("-" * 20)
     
@@ -87,7 +83,7 @@ def procesar_anios():
     print("-" * 20)
 
     print("Cálculo del Producto Cartesiano (Años x Edades):")
-    anio_actual = datetime.now().year
+    anio_actual = 2025
     edades_actuales = []
     for anio in anios_nacimiento:
         edad = anio_actual - anio
@@ -97,7 +93,6 @@ def procesar_anios():
     print(f"Conjunto de años: {anios_nacimiento}")
     print(f"Conjunto de edades: {edades_actuales}")
 
-    # --- CORRECCIÓN AQUÍ ---
     producto = ops.producto_cartesiano(anios_nacimiento, edades_actuales)
     print("El producto cartesiano es el conjunto de todos los pares (año, edad) posibles:")
     print(producto)
